@@ -7,6 +7,7 @@ import AutoResponse from "../pages/AutoResponse";
 import Customers from "../pages/Customers";
 import Subscriptions from "../pages/Subscriptions";
 import Books from "../pages/Books";
+import GreenLanterns from "../pages/GreenLanterns";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "books",
         element: <Books />,
+      },
+      {
+        path: "green-lanterns",
+        element: <GreenLanterns />,
       },
     ],
   },

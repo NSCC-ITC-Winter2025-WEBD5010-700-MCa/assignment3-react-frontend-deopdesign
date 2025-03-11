@@ -1,0 +1,178 @@
+{
+  "green-lanterns": [
+    {
+      "_id": {
+        "$oid": "6786bfc8de11556930179612"
+      },
+      "title": "GREEN LANTERNS VOL. 1: RAGE PLANET",
+      "description": "In these stories from GREEN LANTERNS: REBIRTH #1 and GREEN LANTERN #1-6, new Green Lanterns Jessica Cruz and Simon Baz begin a new era of emerald excitement, tackling the universe's toughest beat: Earth. These rookie Lanterns promised to protect others in brightest day or blackest night, but as the 'Red Planet' begins to rise, the duo finds themselves confronted with the unimaginable threat of Bleez and the Red Lanterns!",
+      "url": "https://www.dc.com/graphic-novels/green-lanterns-2016/green-lanterns-vol-1-rage-planet",
+      "writtenBy": ["Geoff Johns", "Sam Humphries"],
+      "artBy": [
+        "Jack Herbert",
+        "Robson Rocha",
+        "Various",
+        "Tom Derenick",
+        "Neil Edwards",
+        "Ed Benes",
+        "Ethan Van Sciver"
+      ],
+      "specs": {
+        "series": "GREEN LANTERNS 2016",
+        "price": 16.99,
+        "onSaleDate": "Wednesday, January 25th, 2017",
+        "pageCount": 168,
+        "rated": "Teen"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6786bfc8de11556930179613"
+      },
+      "title": "GREEN LANTERNS VOL. 2: THE PHANTOM LANTERN",
+      "description": "In this second collection of tales starring the mismatched Green Lanterns of Earth, Jessica Cruz at last learns why her partner, Simon Baz, carries a gun in addition to his power ring! And the Guardian's greatest secret, the Phantom Lantern, falls into the hands of an evil presence from Jessica's past, giving him control over all aspects of the emotional spectrum! Collects GREEN LANTERNS #7-14.",
+      "url": "https://www.dc.com/graphic-novels/green-lanterns-2016/green-lanterns-vol-2-the-phantom-lantern",
+      "writtenBy": ["Sam Humphries"],
+      "artBy": [
+        "Jack Herbert",
+        "Robson Rocha",
+        "Various",
+        "Ronan Cliquet",
+        "Eduardo Pansica"
+      ],
+      "coverBy": ["Robson Rocha", "Joe Prado"],
+      "specs": {
+        "series": "GREEN LANTERNS 2016",
+        "price": 19.99,
+        "onSaleDate": "Wednesday, April 26th, 2017",
+        "pageCount": 184,
+        "rated": "Teen"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6786bfc8de11556930179615"
+      },
+      "title": "GREEN LANTERNS VOL. 4: THE FIRST RING",
+      "description": "Simon Baz and Jessica Cruz venture into space to train with the Green Lantern Corps! But will they reach their destination when Jessica is jettisoned out of transluminal travel and forced to find her way through the void of space? Meanwhile, the Corps agrees to work with the Sinestro Corps to protect the universe, one Green and one Yellow per sector. So what does this mean for Sector 2814—and Simon and Jessica's partnership? Collects GREEN LANTERNS #22-26.",
+      "url": "https://www.dc.com/graphic-novels/green-lanterns-2016/green-lanterns-vol-4-the-first-ring",
+      "writtenBy": ["Sam Humphries"],
+      "artBy": [
+        "Daniel Henriques",
+        "Matt Santorelli",
+        "Robson Rocha",
+        "Carlo Barberi",
+        "Julio Ferreira",
+        "Ronan Cliquet",
+        "Eduardo Pansica"
+      ],
+      "coverBy": ["Mike McKone"],
+      "specs": {
+        "series": "GREEN LANTERNS 2016",
+        "price": 14.99,
+        "onSaleDate": "Wednesday, December 20th, 2017",
+        "pageCount": 128,
+        "rated": "Teen"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6786bfc8de11556930179616"
+      },
+      "title": "GREEN LANTERNS VOL. 5: OUT OF TIME",
+      "description": "Jessica Cruz and Simon Baz are the galaxy's newest and brightest Green Lanterns, but how did they get here? Now that they've been partners for a while, a look back to how it all began for each of them might help them understand their current problems. Collects GREEN LANTERNS #27-32.",
+      "url": "https://www.dc.com/graphic-novels/green-lanterns-2016/green-lanterns-vol-5-out-of-time",
+      "writtenBy": ["Sam Humphries"],
+      "artBy": ["Eduardo Pansica", "Ronan Cliquet", "Carlo Barberi"],
+      "coverBy": ["Brandon Peterson"],
+      "specs": {
+        "series": "GREEN LANTERNS 2016",
+        "price": 16.99,
+        "onSaleDate": "Wednesday, March 14th, 2018",
+        "pageCount": 144,
+        "rated": "Teen"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6786bfc8de11556930179617"
+      },
+      "title": "GREEN LANTERNS VOL. 6: A WORLD OF OUR OWN",
+      "description": "Green Lanterns Simon Baz and Jessica Cruz find themselves back on Earth in a battle against Bolphunga the Unrelenting and his evil horde. But the true test comes as Jessica and Simon have to fight their way into a house that has mysteriously appeared in a blinding flash of light to uncover the secrets hidden inside. Collects GREEN LANTERNS #33-39.",
+      "url": "https://www.dc.com/graphic-novels/green-lanterns-2016/green-lanterns-vol-6-a-world-of-our-own",
+      "writtenBy": ["Tim Seeley"],
+      "artBy": ["Eduardo Pansica", "Ronan Cliquet", "Carlo Barberi"],
+      "coverBy": ["Brandon Peterson"],
+      "specs": {
+        "series": "GREEN LANTERNS 2016",
+        "price": 16.99,
+        "onSaleDate": "Wednesday, July 11th, 2018",
+        "pageCount": 168,
+        "rated": "Teen"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6786bfc8de11556930179618"
+      },
+      "title": "GREEN LANTERNS VOL. 7: SUPERHUMAN TRAFFICKING",
+      "description": "Jessica Cruz and Simon Baz are Green Lanterns protecting Earth, but the job's much bigger than just one planet. As space cops, the rookie Lanterns patrol the stars and protect whatever sector they're assigned to. But when Earth itself is threatened by an alien invasion, the two must take down a gang of slavers, with the help of the Justice League! Collects GREEN LANTERNS #40-43 and Annual #1.",
+      "url": "https://www.dc.com/graphic-novels/green-lanterns-2016/green-lanterns-vol-7-superhuman-trafficking",
+      "writtenBy": ["Tim Seeley"],
+      "artBy": ["Eduardo Pansica", "Ronan Cliquet"],
+      "coverBy": ["Will Conrad"],
+      "specs": {
+        "series": "GREEN LANTERNS 2016",
+        "price": 16.99,
+        "onSaleDate": "Wednesday, November 28th, 2018",
+        "pageCount": 144,
+        "rated": "Teen"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6786bfc8de11556930179619"
+      },
+      "title": "GREEN LANTERNS VOL. 8: GHOSTS OF THE PAST",
+      "description": "Jessica Cruz must revisit her past when she and Simon Baz return to her hometown to investigate a murder mystery. Meanwhile, Simon and Jessica must face their worst fears to stop a deadly new threat from consuming their sector—and the Green Lantern Corps itself! Collects GREEN LANTERNS #44-49.",
+      "url": "https://www.dc.com/graphic-novels/green-lanterns-2016/green-lanterns-vol-8-ghosts-of-the-past",
+      "writtenBy": ["Tim Seeley"],
+      "artBy": ["V Ken Marion", "Ronan Cliquet", "Eduardo Pansica"],
+      "coverBy": ["Will Conrad"],
+      "specs": {
+        "series": "GREEN LANTERNS 2016",
+        "price": 16.99,
+        "onSaleDate": "Wednesday, March 6th, 2019",
+        "pageCount": 144,
+        "rated": "Teen"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6786bfc8de1155693017961a"
+      },
+      "title": "GREEN LANTERNS VOL. 9: EVIL'S MIGHT",
+      "description": "Simon Baz and Jessica Cruz face their greatest fears and make their greatest sacrifices in this final collection of the Green Lanterns series. Can they protect the universe as Earth faces an invasion from a powerful new enemy? Collects GREEN LANTERNS #50-57.",
+      "url": "https://www.dc.com/graphic-novels/green-lanterns-2016/green-lanterns-vol-9-evils-might",
+      "writtenBy": ["Dan Jurgens"],
+      "artBy": ["Mike Perkins", "Marco Santucci"],
+      "coverBy": ["Mike Perkins"],
+      "specs": {
+        "series": "GREEN LANTERNS 2016",
+        "price": 16.99,
+        "onSaleDate": "Wednesday, July 10th, 2019",
+        "pageCount": 192,
+        "rated": "Teen"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "6798424c35c834aa23c160d1"
+      },
+      "title": "GREEN LANTERNS VOL. 10: THE FINAL FRONTIER",
+      "description": "A new chapter for the Green Lantern Corps as they face a galaxy-wide crisis.",
+      "writtenBy": ["Author Name"],
+      "__v": 0
+    }
+  ]
+}

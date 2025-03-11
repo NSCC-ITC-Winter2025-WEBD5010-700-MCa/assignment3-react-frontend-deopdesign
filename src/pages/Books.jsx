@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import BooksTable from "../components/BooksTable";
+
 const Books = () => {
   const {
     isPending,
@@ -18,13 +18,7 @@ const Books = () => {
   return (
     <div>
       <h1 className="text-2xl font-bold">Books</h1>
-      {isPending ? (
-        <div>Loading....</div>
-      ) : (
-        <>
-          <BooksTable books={books} />
-        </>
-      )}
+      {isPending ? <div>Loading....</div> : <></>}
     </div>
   );
 };
