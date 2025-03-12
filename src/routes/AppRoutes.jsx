@@ -8,6 +8,7 @@ import Customers from "../pages/Customers";
 import Subscriptions from "../pages/Subscriptions";
 import Books from "../pages/Books";
 import GreenLanterns from "../pages/GreenLanterns";
+import GreenLanternCreate from "../components/greenLanterns/GreenLanternCreate";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,12 @@ const router = createBrowserRouter([
       {
         path: "green-lanterns",
         element: <GreenLanterns />,
+        children: [
+          {
+            path: "create",
+            element: <GreenLanternCreate />,
+          },
+        ],
       },
     ],
   },
