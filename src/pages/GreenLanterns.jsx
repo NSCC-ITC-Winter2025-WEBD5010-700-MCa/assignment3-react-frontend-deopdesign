@@ -1,8 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import GreenLanternsTable from "../components/greenLanterns/GreenLanternsTable";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 const GreenLanterns = () => {
+  // get the current location information
+  const location = useLocation();
+
+  console.log(location.pathname);
   const {
     isPending,
     error,
@@ -20,12 +24,15 @@ const GreenLanterns = () => {
 
   return (
     <div>
-      <Outlet />
       <h1 className="text-2xl font-bold">Green Lanterns</h1>
-      {isPending ? (
-        <div>Loading...</div>
+      {location.pathname === `/admin/green-lanterns` ? (
+        isPending ? (
+          <div>Loading...</div>
+        ) : (
+          <GreenLanternsTable greenLanterns={greenLanterns} />
+        )
       ) : (
-        <GreenLanternsTable greenLanterns={greenLanterns} />
+        <Outlet />
       )}
     </div>
   );
