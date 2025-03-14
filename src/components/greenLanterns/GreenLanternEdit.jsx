@@ -1,55 +1,41 @@
 import { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
 
-function GreenLanternCreate() {
+function GreenLanternEdit() {
+  const { id } = useParams();
+  console.log("ID from useParams:", id);
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const {
     register,
     handleSubmit,
     formState: { errors },
-    trigger,
-  } = useForm({
-    mode: "onChange", // Validation runs on every keystroke
+    setValue,
+  } = useForm();
+  const { isPending, error, data, isSuccess } = useQuery({
+    queryKey: ["greenLantern", id],
+    queryFn: async () => {
+      const response = await fetch(
+        `http://localhost:3000/green-lanterns/${id}`
+      );
+      if (!response.ok) throw new Error("Failed to fetch data");
+      return response.json();
+    },
   });
 
-  useEffect(() => {
-    trigger(); // Run validation immediately on mount
-  }, [trigger]);
-
-  const queryClient = useQueryClient();
-  const navigate = useNavigate();
-  const createGreenlanternMutation = useMutation({
+  const editGreenLanternMutation = useMutation({
     mutationFn: async (data) => {
-      const formattedData = {
-        ...data,
-        writtenBy: data.writtenBy.split(",").map((item) => item.trim()),
-        specs: {
-          pageCount: parseInt(data.pageCount, 10) || 0,
-          price: parseFloat(data.price) || 0,
-        },
-      };
-
-      console.log("📤 Sending formatted data:", formattedData);
-
-      try {
-        const response = await fetch("http://localhost:3000/green-lanterns", {
-          method: "POST",
+      const response = await fetch(
+        `http://localhost:3000/green-lanterns/${id}`,
+        {
+          method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formattedData),
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to create Green Lantern");
+          body: JSON.stringify(data),
         }
-
-        const result = await response.json();
-        console.log("✅ Green Lantern created successfully:", result);
-        return result;
-      } catch (error) {
-        console.error("❌ Error creating Green Lantern:", error);
-        throw error;
-      }
+      );
+      return response.json();
     },
     onSuccess: () => {
       queryClient.invalidateQueries(["greenLanternData"]);
@@ -57,17 +43,30 @@ function GreenLanternCreate() {
     },
   });
 
+  useEffect(() => {
+    if (isSuccess) {
+      // console.log("ON SUCCESS FIRED !!!!!!!!!!!!!!!!");
+      // console.log(data);
+      setValue("title", data.title);
+      setValue("writtenBy", data.writtenBy);
+      setValue("pageCount", data.specs.pageCount);
+      setValue("price", data.specs.price);
+    }
+  }, [isSuccess, data]);
+
+  if (isPending) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  const processData = (data) => {
+    editGreenLanternMutation.mutate(data);
+  };
+
   return (
     <div className="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
       <h2 className="text-2xl font-bold mb-4 text-gray-800">
-        Create New Green Lantern
+        Edit Green Lantern Id: {data._id}
       </h2>
-      <form
-        onSubmit={handleSubmit((data) =>
-          createGreenlanternMutation.mutate(data)
-        )}
-        className="space-y-4"
-      >
+      <form onSubmit={handleSubmit(processData)} className="space-y-4">
         {/* Title Input */}
         <div>
           <input
@@ -124,16 +123,13 @@ function GreenLanternCreate() {
         {/* Submit Button */}
         <button
           type="submit"
-          disabled={createGreenlanternMutation.isLoading}
           className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
         >
-          {createGreenlanternMutation.isLoading
-            ? "Creating..."
-            : "Create Green Lantern"}
+          Save Changes
         </button>
       </form>
     </div>
   );
 }
 
-export default GreenLanternCreate;
+export default GreenLanternEdit;

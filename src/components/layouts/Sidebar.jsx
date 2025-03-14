@@ -14,7 +14,7 @@ import { faBook } from "@fortawesome/free-solid-svg-icons/faBook";
 
 const SidebarItem = ({ href, label, isCollapsed, icon }) => {
   const location = useLocation();
-  const isActive = location.pathname === href;
+  const isActive = location.pathname.startsWith(href);
 
   return (
     <li className="group">

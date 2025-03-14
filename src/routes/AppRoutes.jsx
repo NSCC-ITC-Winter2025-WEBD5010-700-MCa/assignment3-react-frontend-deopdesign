@@ -9,6 +9,7 @@ import Subscriptions from "../pages/Subscriptions";
 import Books from "../pages/Books";
 import GreenLanterns from "../pages/GreenLanterns";
 import GreenLanternCreate from "../components/greenLanterns/GreenLanternCreate";
+import GreenLanternEdit from "../components/greenLanterns/GreenLanternEdit";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
           {
             path: "create",
             element: <GreenLanternCreate />,
+          },
+
+          {
+            path: ":id/edit",
+            element: <GreenLanternEdit />,
           },
         ],
       },

@@ -1,7 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const GreenLanternsTable = ({ greenLanterns }) => {
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
 
   const deleteGreenLanternMutation = useMutation({
@@ -74,7 +75,14 @@ const GreenLanternsTable = ({ greenLanterns }) => {
                   <button className="bg-green-500 text-white px-2 py-1 text-sm rounded hover:bg-green-600">
                     Details
                   </button>
-                  <button className="bg-blue-500 text-white px-2 py-1 text-sm rounded hover:bg-blue-600">
+                  <button
+                    onClick={() => {
+                      navigate(
+                        `/admin/green-lanterns/${greenLantern._id}/edit`
+                      );
+                    }}
+                    className="bg-blue-500 text-white px-2 py-1 text-sm rounded hover:bg-blue-600"
+                  >
                     Edit
                   </button>
                   <button
