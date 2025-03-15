@@ -2,12 +2,17 @@ import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 const fetchGreenLanternDetails = async (id) => {
-  const response = await fetch(
-    `https://green-lantern-trade-paperbacks.onrender.com/green-lanterns/${id}`
-  );
+  // Dynamically use the API URL based on the environment
+  const apiUrl =
+    process.env.VITE_API_URL ||
+    "https://green-lantern-trade-paperbacks.onrender.com";
+
+  const response = await fetch(`${apiUrl}/green-lanterns/${id}`);
+
   if (!response.ok) {
     throw new Error("Failed to fetch details");
   }
+
   return response.json();
 };
 

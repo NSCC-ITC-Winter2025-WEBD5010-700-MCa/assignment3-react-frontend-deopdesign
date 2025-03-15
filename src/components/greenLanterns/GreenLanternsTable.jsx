@@ -1,20 +1,40 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router-dom";
 
-const GreenLanternsTable = ({ greenLanterns }) => {
+// Get the base API URL dynamically based on environment (local or remote)
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://green-lantern-trade-paperbacks.onrender.com";
+
+const GreenLanternsTable = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+
+  // Fetch Green Lanterns data
+  const {
+    data: greenLanterns,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["greenLanterns"],
+    queryFn: async () => {
+      const response = await fetch(`${API_URL}/green-lanterns`);
+      if (!response.ok) throw new Error("Failed to fetch data");
+      return response.json();
+    },
+  });
 
   const deleteGreenLanternMutation = useMutation({
     mutationFn: async (greenLanternId) => {
       const response = await fetch(
-        `https://green-lantern-trade-paperbacks.onrender.com/green-lanterns/${greenLanternId}`,
+        `${API_URL}/green-lanterns/${greenLanternId}`,
         { method: "DELETE" }
       );
+      if (!response.ok) throw new Error("Failed to delete");
       return response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(["greenLanternData"]);
+      queryClient.invalidateQueries(["greenLanterns"]);
     },
     onError: (error) => {
       alert("Unable to delete");
@@ -22,13 +42,15 @@ const GreenLanternsTable = ({ greenLanterns }) => {
   });
 
   const handleDelete = (greenLanternId) => {
-    // send a delete request to our API to delete the selected record
     if (
       window.confirm(`Are you sure you wish to delete record ${greenLanternId}`)
     ) {
       deleteGreenLanternMutation.mutate(greenLanternId);
     }
   };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <>

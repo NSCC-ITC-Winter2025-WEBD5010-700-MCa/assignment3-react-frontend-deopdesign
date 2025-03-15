@@ -14,12 +14,16 @@ function GreenLanternEdit() {
     formState: { errors },
     setValue,
   } = useForm();
+
+  // Dynamically use the API URL based on the environment
+  const apiUrl =
+    process.env.VITE_API_URL ||
+    "https://green-lantern-trade-paperbacks.onrender.com";
+
   const { isPending, error, data, isSuccess } = useQuery({
     queryKey: ["greenLantern", id],
     queryFn: async () => {
-      const response = await fetch(
-        `https://green-lantern-trade-paperbacks.onrender.com/green-lanterns/${id}`
-      );
+      const response = await fetch(`${apiUrl}/green-lanterns/${id}`);
       if (!response.ok) throw new Error("Failed to fetch data");
       return response.json();
     },
@@ -27,14 +31,11 @@ function GreenLanternEdit() {
 
   const editGreenLanternMutation = useMutation({
     mutationFn: async (data) => {
-      const response = await fetch(
-        `https://green-lantern-trade-paperbacks.onrender.com/green-lanterns/${id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch(`${apiUrl}/green-lanterns/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
       return response.json();
     },
     onSuccess: () => {
@@ -45,8 +46,6 @@ function GreenLanternEdit() {
 
   useEffect(() => {
     if (isSuccess) {
-      // console.log("ON SUCCESS FIRED !!!!!!!!!!!!!!!!");
-      // console.log(data);
       setValue("title", data.title);
       setValue("writtenBy", data.writtenBy);
       setValue("pageCount", data.specs.pageCount);

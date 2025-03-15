@@ -33,14 +33,12 @@ function GreenLanternCreate() {
       console.log("📤 Sending formatted data:", formattedData);
 
       try {
-        const response = await fetch(
-          "https://green-lantern-trade-paperbacks.onrender.com/green-lanterns",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formattedData),
-          }
-        );
+        const apiUrl = process.env.VITE_API_URL; // Access the environment variable
+        const response = await fetch(`${apiUrl}/green-lanterns`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formattedData),
+        });
 
         if (!response.ok) {
           throw new Error("Failed to create Green Lantern");
