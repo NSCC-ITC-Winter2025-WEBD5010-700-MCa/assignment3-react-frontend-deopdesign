@@ -21,24 +21,28 @@ function GreenLanternCreate() {
   const navigate = useNavigate();
   const createGreenlanternMutation = useMutation({
     mutationFn: async (data) => {
+      // Format the data correctly before sending
       const formattedData = {
         ...data,
-        writtenBy: data.writtenBy.split(",").map((item) => item.trim()),
+        writtenBy: data.writtenBy.split(",").map((item) => item.trim()), // Split writtenBy into an array
         specs: {
-          pageCount: parseInt(data.pageCount, 10) || 0,
-          price: parseFloat(data.price) || 0,
+          pageCount: parseInt(data.pageCount, 10) || 0, // Ensure pageCount is a number
+          price: parseFloat(data.price) || 0, // Ensure price is a number
         },
       };
 
       console.log("📤 Sending formatted data:", formattedData);
 
       try {
-        const apiUrl = process.env.VITE_API_URL; // Access the environment variable
-        const response = await fetch(`${apiUrl}/green-lanterns`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formattedData),
-        });
+        const apiUrl = import.meta.env.VITE_API_URL; // Correctly use import.meta.env
+        const response = await fetch(
+          `${apiUrl}/green-lanterns`, // Use apiUrl here
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formattedData), // Send the formatted data
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Failed to create Green Lantern");
@@ -98,7 +102,10 @@ function GreenLanternCreate() {
         {/* Page Count Input */}
         <div>
           <input
-            {...register("pageCount", { required: "Page count is required!" })}
+            {...register("pageCount", {
+              required: "Page count is required!",
+              valueAsNumber: true, // Ensures pageCount is treated as a number
+            })}
             type="number"
             placeholder="Page Count"
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -111,7 +118,10 @@ function GreenLanternCreate() {
         {/* Price Input */}
         <div>
           <input
-            {...register("price", { required: "Price is required!" })}
+            {...register("price", {
+              required: "Price is required!",
+              valueAsNumber: true, // Ensures price is treated as a number
+            })}
             type="number"
             step="0.01"
             placeholder="Price"
