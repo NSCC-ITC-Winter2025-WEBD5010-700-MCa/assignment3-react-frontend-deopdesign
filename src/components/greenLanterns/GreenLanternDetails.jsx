@@ -1,18 +1,12 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
+// Example fetch function (replace with actual API request)
 const fetchGreenLanternDetails = async (id) => {
-  // Dynamically use the API URL based on the environment
-  const apiUrl =
-    process.env.VITE_API_URL ||
-    "https://green-lantern-trade-paperbacks.onrender.com";
-
-  const response = await fetch(`${apiUrl}/green-lanterns/${id}`);
-
+  const response = await fetch(`http://localhost:3000/green-lanterns/${id}`);
   if (!response.ok) {
-    throw new Error("Failed to fetch details");
+    throw new Error("Failed to fetch Green Lantern details");
   }
-
   return response.json();
 };
 
@@ -25,11 +19,15 @@ const GreenLanternDetails = () => {
     isLoading,
   } = useQuery({
     queryKey: ["greenLanternDetails", id],
-    queryFn: () => fetchGreenLanternDetails(id),
+    queryFn: () => fetchGreenLanternDetails(id), // Using the defined fetch function
   });
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
+
+  if (!greenLantern) {
+    return <p>Details not found.</p>;
+  }
 
   return (
     <div className="max-w-2xl mx-auto p-4 border rounded shadow-lg bg-white">
@@ -46,14 +44,14 @@ const GreenLanternDetails = () => {
 
       <h2 className="text-xl mt-4 font-semibold">Written By</h2>
       <ul className="list-disc list-inside">
-        {greenLantern.writtenBy.map((writer, index) => (
+        {greenLantern.writtenBy?.map((writer, index) => (
           <li key={index}>{writer}</li>
         ))}
       </ul>
 
       <h2 className="text-xl mt-4 font-semibold">Art By</h2>
       <ul className="list-disc list-inside">
-        {greenLantern.artBy.map((artist, index) => (
+        {greenLantern.artBy?.map((artist, index) => (
           <li key={index}>{artist}</li>
         ))}
       </ul>
@@ -62,7 +60,7 @@ const GreenLanternDetails = () => {
         <>
           <h2 className="text-xl mt-4 font-semibold">Cover By</h2>
           <ul className="list-disc list-inside">
-            {greenLantern.coverBy.map((coverArtist, index) => (
+            {greenLantern.coverBy?.map((coverArtist, index) => (
               <li key={index}>{coverArtist}</li>
             ))}
           </ul>
@@ -70,25 +68,7 @@ const GreenLanternDetails = () => {
       )}
 
       <h2 className="text-xl mt-4 font-semibold">Specifications</h2>
-      <p>
-        <strong>Series:</strong> {greenLantern.specs.series}
-      </p>
-      <p>
-        <strong>Price:</strong> ${greenLantern.specs.price}
-      </p>
-      <p>
-        <strong>On Sale Date:</strong> {greenLantern.specs.onSaleDate}
-      </p>
-      <p>
-        <strong>Page Count:</strong> {greenLantern.specs.pageCount}
-      </p>
-      <p>
-        <strong>Rated:</strong> {greenLantern.specs.rated}
-      </p>
-
-      <Link to="/admin/green-lanterns" className="block mt-4 text-blue-500">
-        Back to List
-      </Link>
+      <p>{/* Add additional specifications or other data */}</p>
     </div>
   );
 };
