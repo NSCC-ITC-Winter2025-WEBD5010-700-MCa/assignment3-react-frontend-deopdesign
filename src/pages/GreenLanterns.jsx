@@ -14,7 +14,9 @@ const GreenLanterns = () => {
   } = useQuery({
     queryKey: ["greenLanternData"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:3000/green-lanterns");
+      const response = await fetch(
+        "https://green-lantern-trade-paperbacks.onrender.com/green-lanterns"
+      );
       return response.json();
     },
     // staleTime: Infinity,

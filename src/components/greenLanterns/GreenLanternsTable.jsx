@@ -8,7 +8,7 @@ const GreenLanternsTable = ({ greenLanterns }) => {
   const deleteGreenLanternMutation = useMutation({
     mutationFn: async (greenLanternId) => {
       const response = await fetch(
-        `http://localhost:3000/green-lanterns/${greenLanternId}`,
+        `https://green-lantern-trade-paperbacks.onrender.com/green-lanterns/${greenLanternId}`,
         { method: "DELETE" }
       );
       return response.json();

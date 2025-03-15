@@ -18,7 +18,7 @@ function GreenLanternEdit() {
     queryKey: ["greenLantern", id],
     queryFn: async () => {
       const response = await fetch(
-        `http://localhost:3000/green-lanterns/${id}`
+        `https://green-lantern-trade-paperbacks.onrender.com/green-lanterns/${id}`
       );
       if (!response.ok) throw new Error("Failed to fetch data");
       return response.json();
@@ -28,7 +28,7 @@ function GreenLanternEdit() {
   const editGreenLanternMutation = useMutation({
     mutationFn: async (data) => {
       const response = await fetch(
-        `http://localhost:3000/green-lanterns/${id}`,
+        `https://green-lantern-trade-paperbacks.onrender.com/green-lanterns/${id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
