@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
-// Example fetch function (replace with actual API request)
 const fetchGreenLanternDetails = async (id) => {
   const response = await fetch(`http://localhost:3000/green-lanterns/${id}`);
   if (!response.ok) {
@@ -17,17 +16,18 @@ const GreenLanternDetails = () => {
     data: greenLantern,
     error,
     isLoading,
+    isError,
   } = useQuery({
     queryKey: ["greenLanternDetails", id],
-    queryFn: () => fetchGreenLanternDetails(id), // Using the defined fetch function
+    queryFn: () => fetchGreenLanternDetails(id),
+    retry: 3,
   });
 
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (isError) return <p>Error: {error.message}</p>;
+  if (!greenLantern) return <p>Details not found.</p>;
 
-  if (!greenLantern) {
-    return <p>Details not found.</p>;
-  }
+  const { specs = {} } = greenLantern;
 
   return (
     <div className="max-w-2xl mx-auto p-4 border rounded shadow-lg bg-white">
@@ -41,6 +41,12 @@ const GreenLanternDetails = () => {
       >
         View on DC Comics
       </a>
+
+      {greenLantern.publisher && (
+        <p className="mt-4 text-gray-500">
+          <strong>Publisher:</strong> {greenLantern.publisher}
+        </p>
+      )}
 
       <h2 className="text-xl mt-4 font-semibold">Written By</h2>
       <ul className="list-disc list-inside">
@@ -67,8 +73,22 @@ const GreenLanternDetails = () => {
         </>
       )}
 
+      {specs.price && (
+        <p className="mt-4 text-gray-500">
+          <strong>Price:</strong> ${specs.price}
+        </p>
+      )}
+
       <h2 className="text-xl mt-4 font-semibold">Specifications</h2>
-      <p>{/* Add additional specifications or other data */}</p>
+      <p className="mt-2">
+        <strong>Page Count:</strong> {specs.pageCount ?? "N/A"}
+      </p>
+      <p className="mt-2">
+        <strong>On Sale Date:</strong> {specs.onSaleDate ?? "N/A"}
+      </p>
+      <p className="mt-2">
+        <strong>Rating:</strong> {specs.rated ?? "N/A"}
+      </p>
     </div>
   );
 };
