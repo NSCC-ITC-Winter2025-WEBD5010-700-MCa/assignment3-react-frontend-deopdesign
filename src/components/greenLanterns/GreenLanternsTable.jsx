@@ -76,22 +76,24 @@ const GreenLanternsTable = () => {
           </tr>
         </thead>
         <tbody>
-          {greenLanterns.map((greenLantern) => {
+          {greenLanterns?.map((greenLantern) => {
             return (
               <tr key={greenLantern._id} className="hover:bg-gray-100">
                 <td className="border border-gray-300 px-4 py-2">
-                  {greenLantern.title}
+                  {greenLantern.title || "No Title Available"}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                  {greenLantern.writtenBy.map((writer, index) => (
-                    <li key={index}>{writer}</li>
-                  ))}
+                  {greenLantern.writtenBy?.length > 0
+                    ? greenLantern.writtenBy.map((writer, index) => (
+                        <li key={index}>{writer}</li>
+                      ))
+                    : "No Authors Listed"}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                  {greenLantern.specs.pageCount}
+                  {greenLantern.specs?.pageCount || "N/A"}
                 </td>
                 <td className="border border-gray-300 px-4 py-2">
-                  {greenLantern.specs.price}
+                  {greenLantern.specs?.price || "N/A"}
                 </td>
                 <td className="border border-gray-300 px-4 py-2 text-center space-x-1">
                   <button
